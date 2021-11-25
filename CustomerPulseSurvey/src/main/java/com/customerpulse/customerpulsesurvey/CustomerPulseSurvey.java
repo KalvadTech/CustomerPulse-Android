@@ -21,14 +21,14 @@ public class CustomerPulseSurvey {
      * open new activity to show the customer pulse survey
      *
      * @param context  context to the current open activity
-     * @param option   the token or the linking id
-     * @param params   hashmap object holds all the params that need to be send to survey
+     * @param link_or_token   the token or the linking id
+     * @param options   hashmap object holds all the params that need to be send to survey
      * @param closingDelayInMs   time to wait before closing the survey after finish in milli seconds
      */
-    public static void showSurveyPage(Context context, String option, HashMap<String, String> params, int closingDelayInMs) {
+    public static void showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, int closingDelayInMs) {
         try {
             Intent intent = new Intent(context, WebViewActivity.class);
-            String url = BASE_URL + option + "/" + Utils.getParams(params);
+            String url = BASE_URL + link_or_token + "/" + Utils.getParams(options);
             intent.putExtra("url", url);
             intent.putExtra("closingDelayInMs", closingDelayInMs);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -38,23 +38,41 @@ public class CustomerPulseSurvey {
         }
     }
 
+    public static void showSurveyPage(Context context, String link_or_token, HashMap<String, String> options) {
+        showSurveyPage(context, link_or_token,options, 2000);
+    }
+
     /**
      * open Bottom Sheet Dialog to show the customer pulse survey
      *
      * @param context     context to the current open activity
-     * @param option      the token or the linking id
-     * @param params      hashmap object holds all the params that need to be send to survey
+     * @param link_or_token      the token or the linking id
+     * @param options      hashmap object holds all the params that need to be send to survey
      * @param dismissible decide bottom sheet dialog can be dismissed or no
      * @param closingDelayInMs   time to wait before closing the survey after finish milli seconds
      */
-    public static void showSurveyBottomSheet(Context context, String option, HashMap<String, String> params, boolean dismissible, int closingDelayInMs) {
+    public static void showSurveyBottomSheet(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs){
         try {
-            String url = BASE_URL + option + "/" + Utils.getParams(params);
+            String url = BASE_URL + link_or_token + "/" + Utils.getParams(options);
             new CustomerPulseBottomSheet().show(context, url, dismissible, closingDelayInMs);
         } catch (Exception e) {
             Log.e("showBottomSheetError", e.getMessage());
         }
     }
+
+    public static void showSurveyBottomSheet(Context context, String link_or_token, HashMap<String, String> options) {
+        showSurveyBottomSheet(context,link_or_token,options,true,2000);
+    }
+
+    public static void showSurveyBottomSheet(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible) {
+        showSurveyBottomSheet(context,link_or_token,options,dismissible,2000);
+    }
+
+    public static void showSurveyBottomSheet(Context context, String link_or_token, HashMap<String, String> options, int closingDelayInMs) {
+        showSurveyBottomSheet(context, link_or_token, options, true, closingDelayInMs);
+    }
+
+
 
 
 }
