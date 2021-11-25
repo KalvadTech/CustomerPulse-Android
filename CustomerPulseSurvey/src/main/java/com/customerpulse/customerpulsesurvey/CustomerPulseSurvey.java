@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.customerpulse.customerpulsesurvey.utils.Utils;
-import com.customerpulse.customerpulsesurvey.view.BottomSheetHandler;
+import com.customerpulse.customerpulsesurvey.view.CustomerPulseBottomSheet;
 import com.customerpulse.customerpulsesurvey.view.WebViewActivity;
 
 import java.util.HashMap;
@@ -50,7 +50,7 @@ public class CustomerPulseSurvey {
     public static void showSurveyBottomSheet(Context context, String option, HashMap<String, String> params, boolean dismissible, int closingDelayInMs) {
         try {
             String url = BASE_URL + option + "/" + Utils.getParams(params);
-            BottomSheetHandler.show(context, url, dismissible, closingDelayInMs);
+            new CustomerPulseBottomSheet().show(context, url, dismissible, closingDelayInMs);
         } catch (Exception e) {
             Log.e("showBottomSheetError", e.getMessage());
         }
