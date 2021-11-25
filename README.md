@@ -8,7 +8,6 @@ is a module written in java used to implement Customer Pulse Survey in android a
 ## Installation
 
 add file CustomerPulseSurvey.aar to your libs directory in your android project and make sure your libs folder is implemented in your project dependencies as JAR/AAR dependencies.
-![Screenshot_20211125-142414_google-pixel4xl-clearlywhite-portrait](https://user-images.githubusercontent.com/24971915/143430605-4ca77e06-8b71-4932-8f2a-84bfdd4304c7.png)
 
 
 ## Usage
