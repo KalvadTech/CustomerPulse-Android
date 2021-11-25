@@ -42,29 +42,41 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
 ### Parameters
 <table>
 
+  
   <tr>
-      <td>context</td>
-      <td>Context: opened activity context</td>
+      <td>Name</td>
+      <td>Type</td>
+      <td>Description</td>
   </tr>
   
   <tr>
-      <td>option</td>
-      <td>String: holds the linking_id or the token provided by the Customer Pulse Survey provider</td>
+      <td>context</td>
+      <td>Context</td>
+      <td>opened activity context</td>
+  </tr>
+  
+  <tr>
+      <td>link_or_token</td>
+      <td>String</td>
+      <td>holds the linking_id or the token provided by the Customer Pulse Survey provider</td>
   </tr>
   
   <tr>
       <td>params</td>
-      <td>HashMap<String, String>: holds all the parmaters needed by the Customer Pulse Survey provider such as lang</td>
+      <td>HashMap<String, String></td>
+      <td>holds all the options needed by the Customer Pulse Survey provider such as lang</td>
   </tr>
   
   <tr>
       <td>closeDelayInMs</td>
-      <td>Integer: time to wait before closing the survey after finish in milli seconds</td>
+      <td>Integer</td>
+      <td>time to wait before closing the survey after finish in milli seconds deafult is 2000 millisecond</td>
   </tr>
   
   <tr>
       <td>dismissible</td>
-      <td>Boolean: used only for bottom sheet to enable or disable closing the survey by the user</td>
+      <td>Boolean</td>
+      <td>used only for bottom sheet to enable or disable closing the survey by the user default is true</td>
   </tr>
 </table>
 
