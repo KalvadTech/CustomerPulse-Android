@@ -9,7 +9,7 @@ is a module written in java used to implement Customer Pulse Survey in android a
 
 add file CustomerPulseSurvey.aar to your libs directory in your android project and make sure your libs folder is added in your project dependencies as JAR/AAR dependencies.
 
-# Steps
+### Steps
 
 1.add CustomerPulseSurvey.aar file to your libs folder inside app folder
 
