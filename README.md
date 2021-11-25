@@ -8,6 +8,7 @@ is a module written in java used to implement Customer Pulse Survey in android a
 ## Installation
 
 add file CustomerPulseSurvey.aar to your libs directory in your android project and make sure your libs folder is implemented in your project dependencies as JAR/AAR dependencies.
+![Screenshot_20211125-142414_google-pixel4xl-clearlywhite-portrait](https://user-images.githubusercontent.com/24971915/143430605-4ca77e06-8b71-4932-8f2a-84bfdd4304c7.png)
 
 
 ## Usage
@@ -47,6 +48,15 @@ add customer pulse as a stand alone page by calling method showSurveyPage with p
 ```bash
 CustomerPulseSurvey.showSurveyPage(context, option, params, closeDelayInMs)
 ```
+
+<table>
+
+  <td> <img src="https://user-images.githubusercontent.com/24971915/143430605-4ca77e06-8b71-4932-8f2a-84bfdd4304c7.png" width="200" /></td>
+  <td><img src="https://user-images.githubusercontent.com/24971915/143430887-fd966724-ec4e-48d9-8df2-bef42367c9c7.png" width="200" /></td>
+  
+</table>
+
+
 
 # Use Customer Pulse Survey bottom sheet dialog
 add customer pulse as a bottom sheet dialog by calling method showSurveyBottomSheet with parameter context, option, params, dismissible, closeDelayInMs
