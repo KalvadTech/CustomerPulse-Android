@@ -13,17 +13,17 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
 
 1.add CustomerPulseSurvey.aar file to your libs folder inside app folder
 
-<img src="https://user-images.githubusercontent.com/24971915/143434248-fb979977-4c01-48fd-b779-6c60d9ec8324.png" width="500" />
+<img src="https://user-images.githubusercontent.com/24971915/143434248-fb979977-4c01-48fd-b779-6c60d9ec8324.png" width="600" />
 2.from file menu open project structure
-<img src="https://user-images.githubusercontent.com/24971915/143434434-bacc68ef-379f-4019-9ecc-03a71f3c5196.png" width="200" />
+<img src="https://user-images.githubusercontent.com/24971915/143434434-bacc68ef-379f-4019-9ecc-03a71f3c5196.png" width="600" />
 3.in left side select Dependencies
-<img src="https://user-images.githubusercontent.com/24971915/143434672-1c4dbe4e-fccb-4c25-a954-a3cf989a7bfc.png" width="200" />
+<img src="https://user-images.githubusercontent.com/24971915/143434672-1c4dbe4e-fccb-4c25-a954-a3cf989a7bfc.png" width="600" />
 4.In modules select app tab
-<img src="https://user-images.githubusercontent.com/24971915/143434850-d255916d-8a02-496e-b8d3-19b4125adb39.png" width="200" />
+<img src="https://user-images.githubusercontent.com/24971915/143434850-d255916d-8a02-496e-b8d3-19b4125adb39.png" width="600" />
 5.In declered dependencies click on the plus "+" icons and select JAR/AAR Dependency
-<img src="https://user-images.githubusercontent.com/24971915/143435226-87a088d5-f8f6-4592-8758-bf13787cbce4.png" width="200" />
+<img src="https://user-images.githubusercontent.com/24971915/143435226-87a088d5-f8f6-4592-8758-bf13787cbce4.png" width="600" />
 5.In step 1 add your libs folder name if you follow from step 1 it should be libs
-<img src="https://user-images.githubusercontent.com/24971915/143435484-69bc9f2d-294b-4329-b2df-d136e3ade528.png" width="200" />
+<img src="https://user-images.githubusercontent.com/24971915/143435484-69bc9f2d-294b-4329-b2df-d136e3ade528.png" width="600" />
 6.Press Ok button then Apply to save change.
 
 ## Usage
