@@ -1,7 +1,5 @@
 package com.customerpulse.customerpulsesurvey.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
