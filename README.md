@@ -41,8 +41,15 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
   </tr>
 </table>
 
+to set language add language code to hashmap with key lang
+
+```bash
+  HashMap<String, String> params = new HashMap<>();
+  params.put("lang", "ar");
+```
+
 # Use Customer Pulse Survey page
-add customer pulse as a stand alone page by calling method showSurveyPage with parameter context, option, params, closeDelayInMs
+add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String option, HashMap<String, String> params, int closingDelayInMs)
 
 ```bash
 CustomerPulseSurvey.showSurveyPage(context, option, params, closeDelayInMs)
@@ -58,10 +65,30 @@ CustomerPulseSurvey.showSurveyPage(context, option, params, closeDelayInMs)
 
 
 # Use Customer Pulse Survey bottom sheet dialog
-add customer pulse as a bottom sheet dialog by calling method showSurveyBottomSheet with parameter context, option, params, dismissible, closeDelayInMs
+add customer pulse as a bottom sheet dialog by calling method showSurveyBottomSheet(Context context, String option, HashMap<String, String> params, boolean dismissible, int closingDelayInMs)
 
 ```bash
-CustomerPulseSurvey.showSurveyPage(context, option, params, closeDelayInMs)
+CustomerPulseSurvey.showSurveyBottomSheet(context, option, params, dismissible, closeDelayInMs)
 ```
 
+to disable user closing bottom sheet set dismissible to false
+
+```bash
+CustomerPulseSurvey.showSurveyBottomSheet(context, option, params, false, closeDelayInMs)
+```
+<table>
+  <td> <img src="https://user-images.githubusercontent.com/24971915/143431354-d8eecceb-ab00-4fe5-b7f7-1ebb68ab6193.png" width="200" /></td>
+  <td><img src="https://user-images.githubusercontent.com/24971915/143431360-59e15169-a892-415d-ba5f-894f866fa8e6.png" width="200" /></td>
+</table>
+
+
+to enable user closing bottom sheet set dismissible to true
+
+```bash
+CustomerPulseSurvey.showSurveyBottomSheet(context, option, params, true, closeDelayInMs)
+```
+<table>
+  <td> <img src="https://user-images.githubusercontent.com/24971915/143432252-53618c6e-c9c3-450a-a68e-5285bb05f3c1.png" width="200" /></td>
+  <td><img src="https://user-images.githubusercontent.com/24971915/143432266-3bf7c603-6871-470e-9396-28caccde6f43.png" width="200" /></td>
+</table>
 
