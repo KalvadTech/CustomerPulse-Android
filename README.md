@@ -12,6 +12,7 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
 # Steps
 
 1.add CustomerPulseSurvey.aar file to your libs folder inside app folder
+
 <img src="https://user-images.githubusercontent.com/24971915/143434248-fb979977-4c01-48fd-b779-6c60d9ec8324.png" width="500" />
 2.from file menu open project structure
 <img src="https://user-images.githubusercontent.com/24971915/143434434-bacc68ef-379f-4019-9ecc-03a71f3c5196.png" width="200" />
