@@ -33,7 +33,7 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
 
   <tr>
       <td>context</td>
-      <td>context of activity you trying to call from</td>
+      <td>Context: opened activity context</td>
   </tr>
   
   <tr>
