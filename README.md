@@ -39,7 +39,7 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
 
 ## Usage
 
-# Parameters
+### Parameters
 <table>
 
   <tr>
@@ -75,7 +75,7 @@ to set language add language code to hashmap with key lang
   params.put("lang", "ar");
 ```
 
-# Use Customer Pulse Survey page
+### Use Customer Pulse Survey page
 add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String option, HashMap<String, String> params, int closingDelayInMs)
 
 ```bash
@@ -91,7 +91,7 @@ CustomerPulseSurvey.showSurveyPage(context, option, params, closeDelayInMs)
 
 
 
-# Use Customer Pulse Survey bottom sheet dialog
+### Use Customer Pulse Survey bottom sheet dialog
 add customer pulse as a bottom sheet dialog by calling method showSurveyBottomSheet(Context context, String option, HashMap<String, String> params, boolean dismissible, int closingDelayInMs)
 
 ```bash
