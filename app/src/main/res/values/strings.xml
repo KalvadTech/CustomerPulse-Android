@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CustomerPulseExample</string>
+    <string name="arabic_page">Arabic Page</string>
+    <string name="english_page">English page</string>
+    <string name="arabic_bottom_sheet">Arabic bottom sheet</string>
+    <string name="english_bottom_sheet">English bottom sheet</string>
+    <string name="arabic_dismissable_bottom_sheet">Arabic Dismissable bottom sheet</string>
+    <string name="english_dismissable_bottom_sheet">English Dismissable bottom sheet</string>
+</resources>
