@@ -76,19 +76,24 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
   <tr>
       <td>dismissible</td>
       <td>Boolean</td>
-      <td>used only for bottom sheet to enable or disable closing the survey by the user default is true</td>
+      <td>enable or disable closing the survey by the user default is true</td>
   </tr>
 </table>
 
 to set language add language code to hashmap with key lang
 
 ```bash
-  HashMap<String, String> params = new HashMap<>();
-  params.put("lang", "ar");
+  HashMap<String, String> options = new HashMap<>();
+  options.put("lang", "ar");
 ```
 
 ### Use Customer Pulse Survey page
 add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String option, HashMap<String, String> params, int closingDelayInMs)
+
+```bash
+CustomerPulseSurvey.showSurveyPage(context, option, params,)
+```
+
 
 ```bash
 CustomerPulseSurvey.showSurveyPage(context, option, params, closeDelayInMs)
