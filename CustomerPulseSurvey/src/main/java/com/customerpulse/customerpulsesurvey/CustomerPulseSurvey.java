@@ -25,12 +25,13 @@ public class CustomerPulseSurvey {
      * @param options   hashmap object holds all the params that need to be send to survey
      * @param closingDelayInMs   time to wait before closing the survey after finish in milli seconds
      */
-    public static void showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, int closingDelayInMs) {
+    public static void showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs) {
         try {
             Intent intent = new Intent(context, WebViewActivity.class);
             String url = BASE_URL + link_or_token + "/" + Utils.getParams(options);
             intent.putExtra("url", url);
             intent.putExtra("closingDelayInMs", closingDelayInMs);
+            intent.putExtra("dismissible", dismissible);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } catch (Exception e) {
@@ -39,7 +40,15 @@ public class CustomerPulseSurvey {
     }
 
     public static void showSurveyPage(Context context, String link_or_token, HashMap<String, String> options) {
-        showSurveyPage(context, link_or_token,options, 2000);
+        showSurveyPage(context, link_or_token,options, true, 2000);
+    }
+
+    public static void showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible) {
+        showSurveyPage(context, link_or_token,options, dismissible, 2000);
+    }
+
+    public static void showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, int closingDelayInMs) {
+        showSurveyPage(context, link_or_token,options, true, closingDelayInMs);
     }
 
     /**
