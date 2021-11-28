@@ -29,11 +29,11 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build AAR ⚙️🛠
-        run: bash ./gradlew :simplelibrary:assemble
+        run: bash ./gradlew :CustomerPulseSurvey:assemble
 
 
       - name: Publish to GitHub Package Registry 🚀
-        run: bash ./gradlew :simplelibrary:publish
+        run: bash ./gradlew :CustomerPulseSurvey:publish
         env:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
@@ -56,6 +56,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: simplelibrary/build/outputs/aar/simplelibrary-release.aar
-          asset_name: simple-library.aar
+          asset_path: CustomerPulseSurvey/build/outputs/aar/CustomerPulseSurvey-release.aar
+          asset_name: customer-pulse-survey.aar
           asset_content_type: application/aar
