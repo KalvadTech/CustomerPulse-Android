@@ -24,8 +24,9 @@ public class WebViewActivity extends Activity {
     @Override
     public void onBackPressed() {
         Bundle extras = getIntent().getExtras();
-        boolean dismissable = extras.getBoolean("dismissable");
-        if(dismissable)
-            finish();
+        boolean dismissable = extras.getBoolean("dismissible");
+        if (dismissable) {
+            super.onBackPressed();
+        }
     }
 }
