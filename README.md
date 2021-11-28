@@ -93,6 +93,10 @@ to set language add language code to hashmap with key lang
   options.put("lang", "ar");
 ```
 
+
+
+
+
 ### Use Customer Pulse Survey page
 add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs)
 
@@ -122,6 +126,9 @@ CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, dismissible,
   <td><img src="https://user-images.githubusercontent.com/24971915/143430887-fd966724-ec4e-48d9-8df2-bef42367c9c7.png" width="200" /></td>
   
 </table>
+
+
+
 
 
 
