@@ -62,10 +62,15 @@ public class RoundedWebView extends WebView {
         super.onDraw(canvas);
 
         Path path = new Path();
-
+        float[] corners = new float[]{
+                radius, radius,        // Top left radius in px
+                radius, radius,        // Top right radius in px
+                0, 0,          // Bottom right radius in px
+                0, 0           // Bottom left radius in px
+        };
         path.setFillType(Path.FillType.INVERSE_WINDING);
 
-        path.addRoundRect(new RectF(0, getScrollY(), width, getScrollY() + height), radius, radius, Path.Direction.CW);
+        path.addRoundRect(new RectF(0, getScrollY(), width, getScrollY() + height), corners, Path.Direction.CW);
 
         canvas.drawPath(path, createPorterDuffClearPaint());
     }
