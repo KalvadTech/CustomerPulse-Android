@@ -47,36 +47,42 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
       <td>Name</td>
       <td>Type</td>
       <td>Description</td>
+      <td>Default</td>
   </tr>
   
   <tr>
       <td>context</td>
       <td>Context</td>
       <td>opened activity context</td>
+      <td></td>
   </tr>
   
   <tr>
       <td>link_or_token</td>
       <td>String</td>
       <td>holds the linking_id or the token provided by the Customer Pulse Survey provider</td>
+      <td></td>
   </tr>
   
   <tr>
       <td>options</td>
       <td>HashMap<String, String></td>
       <td>holds all the options needed by the Customer Pulse Survey provider such as lang</td>
+      <td></td>
   </tr>
   
   <tr>
       <td>closeDelayInMs</td>
       <td>Integer</td>
-      <td>time to wait before closing the survey after finish in milli seconds deafult is 2000 millisecond</td>
+      <td>time to wait before closing the survey after finish in milliseconds</td>
+      <td>2000 (2 seconds)</td>
   </tr>
   
   <tr>
       <td>dismissible</td>
       <td>Boolean</td>
-      <td>enable or disable closing the survey by the user default is true</td>
+      <td>enable or disable closing the survey by the user</td>
+      <td>true</td>    
   </tr>
 </table>
 
@@ -90,12 +96,12 @@ to set language add language code to hashmap with key lang
 ### Use Customer Pulse Survey page
 add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs)
 
-using default values for dismissible and closeDelayinMs
+using default values for dismissible and closeDelayInMs
 ```bash
 CustomerPulseSurvey.showSurveyPage(context, link_or_token, options,)
 ```
 
-to change close delay only use
+to change closeDelayInMs only use
 ```bash
 CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, closeDelayInMs)
 ```
