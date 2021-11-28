@@ -5,7 +5,7 @@ ext {
     mGroupId = "com.customerpulse.customerpulsesurvey"
     mArtifactId = "customer-pulse-survey"
     mVersionCode = 1
-    mVersionName = "0.1.7"
+    mVersionName = "0.1.0"
 
     mLibraryName = "CustomerPulseSurvey"
     mLibraryDescription = "Library to use customer pulse surveys inside your android app"
@@ -76,8 +76,8 @@ afterEvaluate {
                 name = "GitHubPackages"
                 url = uri("https://github.com/KalvadTech/CustomerPulseSurveyAndroid")
                 credentials {
-                    username = "mohamed50"
-                    password = "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"
+                    username = System.getenv("GPR_USER")
+                    password = System.getenv("GPR_KEY")
                 }
             }
         }
