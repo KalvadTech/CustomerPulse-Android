@@ -62,7 +62,7 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
   </tr>
   
   <tr>
-      <td>params</td>
+      <td>options</td>
       <td>HashMap<String, String></td>
       <td>holds all the options needed by the Customer Pulse Survey provider such as lang</td>
   </tr>
@@ -88,15 +88,26 @@ to set language add language code to hashmap with key lang
 ```
 
 ### Use Customer Pulse Survey page
-add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String option, HashMap<String, String> params, int closingDelayInMs)
+add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs)
 
+using default values for dismissible and closeDelayinMs
 ```bash
-CustomerPulseSurvey.showSurveyPage(context, option, params,)
+CustomerPulseSurvey.showSurveyPage(context, link_or_token, options,)
 ```
 
-
+to change close delay only use
 ```bash
-CustomerPulseSurvey.showSurveyPage(context, option, params, closeDelayInMs)
+CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, closeDelayInMs)
+```
+
+to change dismissible only use
+```bash
+CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, dismissible)
+```
+
+to change both use
+```bash
+CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, dismissible, closeDelayInMs)
 ```
 
 <table>
