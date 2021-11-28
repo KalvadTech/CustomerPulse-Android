@@ -76,8 +76,8 @@ afterEvaluate {
                 name = "GitHubPackages"
                 url = uri("https://github.com/KalvadTech/CustomerPulseSurveyAndroid")
                 credentials {
-                    username = System.getenv("GPR_USER")
-                    password = System.getenv("GPR_KEY")
+                    username = "mohamed50"
+                    password = "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"
                 }
             }
         }
