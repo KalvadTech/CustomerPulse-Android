@@ -50,6 +50,8 @@
             app:iconPadding="0dp"
             app:iconSize="24dp"
             app:iconTint="@android:color/white"
+            app:strokeColor="@android:color/white"
+            app:strokeWidth="2dp"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
 
     </RelativeLayout>
