@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 ext {
-    mGroupId = "com.kalvad.customerpulsesurvey"
+    mGroupId = "com.customerpulse.customerpulsesurvey"
     mArtifactId = "customer-pulse-survey"
     mVersionCode = 1
     mVersionName = "0.1.0"
