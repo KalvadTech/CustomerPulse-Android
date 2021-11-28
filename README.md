@@ -126,17 +126,29 @@ CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, dismissible,
 
 
 ### Use Customer Pulse Survey bottom sheet dialog
-add customer pulse as a bottom sheet dialog by calling method showSurveyBottomSheet(Context context, String option, HashMap<String, String> params, boolean dismissible, int closingDelayInMs)
+add customer pulse as a bottom sheet dialog by calling method showSurveyBottomSheet(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs)
 
+using default values for dismissible and closeDelayInMs
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, option, params, dismissible, closeDelayInMs)
+CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options)
 ```
 
-to disable user closing bottom sheet set dismissible to false
-
+to change closeDelayInMs only use
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, option, params, false, closeDelayInMs)
+CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, closingDelayInMs)
 ```
+
+to change dismissible only use
+```bash
+CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, dismissible)
+```
+
+to change both use
+```bash
+CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, dismissible, closingDelayInMs)
+```
+
+
 <table>
   <td> <img src="https://user-images.githubusercontent.com/24971915/143431354-d8eecceb-ab00-4fe5-b7f7-1ebb68ab6193.png" width="200" /></td>
   <td><img src="https://user-images.githubusercontent.com/24971915/143431360-59e15169-a892-415d-ba5f-894f866fa8e6.png" width="200" /></td>
@@ -146,8 +158,9 @@ CustomerPulseSurvey.showSurveyBottomSheet(context, option, params, false, closeD
 to enable user closing bottom sheet set dismissible to true
 
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, option, params, true, closeDelayInMs)
+CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, true, closeDelayInMs)
 ```
+
 <table>
   <td> <img src="https://user-images.githubusercontent.com/24971915/143432252-53618c6e-c9c3-450a-a68e-5285bb05f3c1.png" width="200" /></td>
   <td><img src="https://user-images.githubusercontent.com/24971915/143432266-3bf7c603-6871-470e-9396-28caccde6f43.png" width="200" /></td>
