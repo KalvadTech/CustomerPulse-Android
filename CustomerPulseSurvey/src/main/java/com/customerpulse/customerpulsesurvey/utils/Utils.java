@@ -2,11 +2,13 @@ package com.customerpulse.customerpulsesurvey.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.customerpulse.customerpulsesurvey.jsHandler.BottomSheetWebInterface;
 import com.customerpulse.customerpulsesurvey.jsHandler.PageWebInterface;
+import com.customerpulse.customerpulsesurvey.view.RoundedWebView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
@@ -26,7 +28,7 @@ public class Utils {
      * @param bottomSheetDialog instance of the webView
      * @param closingDelayInMs   time to wait before closing the survey after finish in milli seconds
      */
-    static public void loadUrl(WebView webView, String url,Context context, BottomSheetDialog bottomSheetDialog, int closingDelayInMs) {
+    static public void loadUrl(RoundedWebView webView, String url, Context context, BottomSheetDialog bottomSheetDialog, int closingDelayInMs) {
         initializeWebView(webView, url);
         webView.addJavascriptInterface(new BottomSheetWebInterface(context, bottomSheetDialog, closingDelayInMs), "Android");
     }
@@ -71,6 +73,7 @@ public class Utils {
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webSettings.setMediaPlaybackRequiresUserGesture(false);
+        webSettings.setUseWideViewPort(true);
     }
 
     /**
@@ -86,5 +89,16 @@ public class Utils {
         return params.toString();
     }
 
+
+    /**
+     * convert dp to pixels
+     *
+     * @param context reference to activity context
+     * @param dp int holds the dp value
+     */
+    public static int dpToPx(Context context, int dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
 
 }

@@ -47,7 +47,7 @@ public class CustomerPulseBottomSheet {
     public void show(Context context, String url, boolean dismissible, int closingDelayInMs) {
         initializeDialog(context, dismissible);
         bottomSheetDialog.show();
-        WebView webView = bottomSheetDialog.findViewById(R.id.bottom_web_view);
+        RoundedWebView webView = bottomSheetDialog.findViewById(R.id.bottom_web_view);
         Button closeBtn = bottomSheetDialog.findViewById(R.id.close_button);
         assert closeBtn != null;
         if (!dismissible)
@@ -59,7 +59,7 @@ public class CustomerPulseBottomSheet {
 
     private void onShow (DialogInterface dialogInterface) {
         BottomSheetDialog d = (BottomSheetDialog) dialogInterface;
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) d.findViewById(R.id.coordinatorLayout);
+        CoordinatorLayout coordinatorLayout =  d.findViewById(R.id.coordinatorLayout);
         RelativeLayout bottomSheetInternal = d.findViewById(R.id.bottom_sheet_layout);
         assert bottomSheetInternal != null;
         BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetInternal);

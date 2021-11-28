@@ -14,23 +14,23 @@
         app:layout_behavior="@string/bottom_sheet_behavior"
         >
 
-        <androidx.cardview.widget.CardView
+        <FrameLayout
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="24dp"
             app:cardCornerRadius="24dp"
-
+            android:background="@drawable/rounded_dialog"
             >
 
-            <WebView
+            <com.customerpulse.customerpulsesurvey.view.RoundedWebView
                 android:id="@+id/bottom_web_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            </WebView>
+            </com.customerpulse.customerpulsesurvey.view.RoundedWebView>
 
-        </androidx.cardview.widget.CardView>
+        </FrameLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/close_button"
