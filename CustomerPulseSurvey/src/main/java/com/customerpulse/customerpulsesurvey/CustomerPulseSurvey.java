@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class CustomerPulseSurvey {
 
-    private static final String BASE_URL = "https://hm.stg.pmo.gov.ae/";
+    private static final String BASE_URL = "https://survey.customerpulse.gov.ae/";
 
     /**
      * open new activity to show the customer pulse survey

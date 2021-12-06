@@ -19,37 +19,37 @@ public class MainActivity extends AppCompatActivity {
         enPageButton.setOnClickListener(v -> {
             HashMap<String, String> params = new HashMap<>();
             params.put("lang", "en");
-            CustomerPulseSurvey.showSurveyPage(this, "M", params,false, 3000);
+            CustomerPulseSurvey.showSurveyPage(this, "B", params,false, 3000);
         });
         Button arPageButton = findViewById(R.id.ar_page);
         arPageButton.setOnClickListener(v -> {
             HashMap<String, String> params = new HashMap<>();
             params.put("lang", "ar");
-            CustomerPulseSurvey.showSurveyPage(this, "M", params, 3000);
+            CustomerPulseSurvey.showSurveyPage(this, "B", params, 3000);
         });
         Button arBottomSheetButton = findViewById(R.id.ar_bottom_sheet);
         arBottomSheetButton.setOnClickListener(v -> {
             HashMap<String, String> params = new HashMap<>();
             params.put("lang", "ar");
-            CustomerPulseSurvey.showSurveyBottomSheet(this, "M", params,false, 3000);
+            CustomerPulseSurvey.showSurveyBottomSheet(this, "B", params,false, 3000);
         });
         Button enBottomSheetButton = findViewById(R.id.en_bottom_sheet);
         enBottomSheetButton.setOnClickListener(v -> {
             HashMap<String, String> params = new HashMap<>();
             params.put("lang", "en");
-            CustomerPulseSurvey.showSurveyBottomSheet(this, "M", params, false, 3000);
+            CustomerPulseSurvey.showSurveyBottomSheet(this, "B", params, false, 3000);
         });
         Button arDismissibleBottomSheetButton = findViewById(R.id.ar_dismissable_bottom_sheet);
         arDismissibleBottomSheetButton.setOnClickListener(v -> {
             HashMap<String, String> params = new HashMap<>();
             params.put("lang", "ar");
-            CustomerPulseSurvey.showSurveyBottomSheet(this, "M", params,true, 3000);
+            CustomerPulseSurvey.showSurveyBottomSheet(this, "B", params,true, 3000);
         });
         Button enDismissibleBottomSheetButton = findViewById(R.id.en_dismissable_bottom_sheet);
         enDismissibleBottomSheetButton.setOnClickListener(v -> {
             HashMap<String, String> params = new HashMap<>();
             params.put("lang", "en");
-            CustomerPulseSurvey.showSurveyBottomSheet(this, "M", params, true, 3000);
+            CustomerPulseSurvey.showSurveyBottomSheet(this, "B", params, true, 3000);
         });
     }
 }
