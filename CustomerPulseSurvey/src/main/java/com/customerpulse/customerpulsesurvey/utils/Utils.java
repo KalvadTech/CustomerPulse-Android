@@ -84,6 +84,8 @@ public class Utils {
     public static String getParams(HashMap<String, String> hashMap) {
         StringBuilder params = new StringBuilder("?");
         for (String i : hashMap.keySet()) {
+            if(params.length() > 1)
+                params.append("&");
             params.append(i).append("=").append(hashMap.get(i));
         }
         return params.toString();
