@@ -109,7 +109,7 @@ add customer pulse as a stand alone page by calling method showSurveyPage(Contex
 
 using default values for dismissible and closeDelayInMs
 ```bash
-CustomerPulseSurvey.showSurveyPage(context, link_or_token, options,)
+CustomerPulseSurvey.showSurveyPage(context, app_id, link_or_token, options,)
 ```
 
 to change closeDelayInMs only use
@@ -172,7 +172,7 @@ CustomerPulseSurvey.showSurveyBottomSheet(context, app_id, link_or_token, option
 to enable user closing bottom sheet set dismissible to true
 
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, true, closeDelayInMs)
+CustomerPulseSurvey.showSurveyBottomSheet(context, app_id, link_or_token, options, true, closeDelayInMs)
 ```
 
 <table>
