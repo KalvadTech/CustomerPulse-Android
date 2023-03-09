@@ -51,5 +51,6 @@ public class MainActivity extends AppCompatActivity {
             params.put("lang", "en");
             CustomerPulseSurvey.showSurveyBottomSheet(this, "com.kalvad.example", "F/AH/", params, true, 3000);
         });
+
     }
 }
