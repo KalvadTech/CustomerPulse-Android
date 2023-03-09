@@ -56,6 +56,13 @@ add file CustomerPulseSurvey.aar to your libs directory in your android project 
       <td>opened activity context</td>
       <td></td>
   </tr>
+    
+  <tr>
+      <td>app_id</td>
+      <td>String</td>
+      <td>holds the application id provided by the Customer Pulse Survey provider</td>
+      <td></td>
+  </tr>
   
   <tr>
       <td>link_or_token</td>
@@ -98,26 +105,26 @@ to set language add language code to hashmap with key lang
 
 
 ### Use Customer Pulse Survey page
-add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs)
+add customer pulse as a stand alone page by calling method showSurveyPage(Context context, String app_id, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs)
 
 using default values for dismissible and closeDelayInMs
 ```bash
-CustomerPulseSurvey.showSurveyPage(context, link_or_token, options,)
+CustomerPulseSurvey.showSurveyPage(context, app_id, link_or_token, options,)
 ```
 
 to change closeDelayInMs only use
 ```bash
-CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, closeDelayInMs)
+CustomerPulseSurvey.showSurveyPage(context, app_id, link_or_token, options, closeDelayInMs)
 ```
 
 to change dismissible only use
 ```bash
-CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, dismissible)
+CustomerPulseSurvey.showSurveyPage(context, app_id, link_or_token, options, dismissible)
 ```
 
 to change both use
 ```bash
-CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, dismissible, closeDelayInMs)
+CustomerPulseSurvey.showSurveyPage(context, app_id, link_or_token, options, dismissible, closeDelayInMs)
 ```
 
 <table>
@@ -133,26 +140,26 @@ CustomerPulseSurvey.showSurveyPage(context, link_or_token, options, dismissible,
 
 
 ### Use Customer Pulse Survey bottom sheet dialog
-add customer pulse as a bottom sheet dialog by calling method showSurveyBottomSheet(Context context, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs)
+add customer pulse as a bottom sheet dialog by calling method showSurveyBottomSheet(Context context, String app_id, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs)
 
 using default values for dismissible and closeDelayInMs
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options)
+CustomerPulseSurvey.showSurveyBottomSheet(context, app_id, link_or_token, options)
 ```
 
 to change closeDelayInMs only use
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, closingDelayInMs)
+CustomerPulseSurvey.showSurveyBottomSheet(context, app_id, link_or_token, options, closingDelayInMs)
 ```
 
 to change dismissible only use
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, dismissible)
+CustomerPulseSurvey.showSurveyBottomSheet(context, app_id, link_or_token, options, dismissible)
 ```
 
 to change both use
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, dismissible, closingDelayInMs)
+CustomerPulseSurvey.showSurveyBottomSheet(context, app_id, link_or_token, options, dismissible, closingDelayInMs)
 ```
 
 
@@ -165,7 +172,7 @@ CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, dismi
 to enable user closing bottom sheet set dismissible to true
 
 ```bash
-CustomerPulseSurvey.showSurveyBottomSheet(context, link_or_token, options, true, closeDelayInMs)
+CustomerPulseSurvey.showSurveyBottomSheet(context, app_id, link_or_token, options, true, closeDelayInMs)
 ```
 
 <table>
