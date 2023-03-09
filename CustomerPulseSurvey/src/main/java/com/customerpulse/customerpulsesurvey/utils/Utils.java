@@ -68,7 +68,7 @@ public class Utils {
         webSettings.setLoadsImagesAutomatically(true);
         webSettings.setAllowContentAccess(true);
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setAppCacheEnabled(true);
+        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
         webSettings.setDomStorageEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
