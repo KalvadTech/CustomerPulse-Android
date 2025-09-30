@@ -31,7 +31,7 @@ public class CustomerPulseBottomSheet {
     }
 
     private void handleOcClickOutSide(){
-        final View touchOutsideView = bottomSheetDialog.getWindow().getDecorView().findViewById(R.id.touch_outside);
+        final View touchOutsideView = bottomSheetDialog.getWindow().getDecorView().findViewById(R.id.coordinatorLayout);
         touchOutsideView.setOnClickListener(view -> bottomSheetDialog.dismiss());
     }
 
