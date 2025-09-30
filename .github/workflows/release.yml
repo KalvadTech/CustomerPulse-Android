@@ -39,7 +39,7 @@ jobs:
 
       # Create (draft) release
       - name: Create Release ✅
-        id: create_release
+        if: ${{ success() }}
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
@@ -50,6 +50,7 @@ jobs:
             CustomerPulseSurvey/build/outputs/aar/*release*.aar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       # If you also want to publish to GitHub Packages Maven later:
       # - name: Publish to GitHub Package Registry 🚀
