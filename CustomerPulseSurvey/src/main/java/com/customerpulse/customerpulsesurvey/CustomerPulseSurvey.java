@@ -11,11 +11,92 @@ import com.customerpulse.customerpulsesurvey.view.WebViewActivity;
 import java.util.HashMap;
 
 /**
- * Class to call the module methods
+ * CustomerPulseSurvey SDK - Display web-based surveys in your Android app.
+ *
+ * <p>This SDK provides two ways to display surveys:</p>
+ * <ul>
+ *   <li>{@link #showSurveyPage} - Full-screen survey in a new Activity</li>
+ *   <li>{@link #showSurveyBottomSheet} - Survey in a Material Design bottom sheet</li>
+ * </ul>
+ *
+ * <h3>Environment Configuration</h3>
+ * <p>By default, the SDK uses the production environment. To switch to sandbox:</p>
+ * <pre>{@code
+ * CustomerPulseSurvey.setEnvironment(CustomerPulseSurvey.Environment.SANDBOX);
+ * }</pre>
+ *
+ * @see Environment
  */
 public class CustomerPulseSurvey {
 
-    private static final String BASE_URL = "https://survey.customerpulse.gov.ae/";
+    private static final String TAG = "CustomerPulseSurvey";
+
+    /**
+     * SDK Environment configuration.
+     * Controls which server the surveys are loaded from.
+     */
+    public enum Environment {
+        /**
+         * Production environment - use for live/released apps.
+         */
+        PRODUCTION("https://survey.customerpulse.gov.ae"),
+
+        /**
+         * Sandbox environment - use for testing and development.
+         */
+        SANDBOX("https://sandboxsurvey.customerpulse.gov.ae");
+
+        private final String baseUrl;
+
+        Environment(String baseUrl) {
+            this.baseUrl = baseUrl;
+        }
+
+        /**
+         * Get the base URL for this environment.
+         *
+         * @return the base URL string
+         */
+        public String getBaseUrl() {
+            return baseUrl;
+        }
+    }
+
+    /**
+     * Current environment. Default is PRODUCTION.
+     */
+    private static Environment environment = Environment.PRODUCTION;
+
+    /**
+     * Set the SDK environment.
+     * Call this before displaying any surveys.
+     *
+     * @param env the environment to use (PRODUCTION or SANDBOX)
+     */
+    public static void setEnvironment(Environment env) {
+        if (env != null) {
+            environment = env;
+            Log.d(TAG, "Environment set to: " + env.name());
+        }
+    }
+
+    /**
+     * Get the current SDK environment.
+     *
+     * @return the current environment
+     */
+    public static Environment getEnvironment() {
+        return environment;
+    }
+
+    /**
+     * Get the base URL for the current environment.
+     *
+     * @return the base URL string
+     */
+    private static String getBaseUrl() {
+        return environment.getBaseUrl();
+    }
 
     /**
      * open new activity to show the customer pulse survey
@@ -30,14 +111,15 @@ public class CustomerPulseSurvey {
         try {
             Intent intent = new Intent(context, WebViewActivity.class);
             options.put("app_id", app_id);
-            String url = BASE_URL + link_or_token + "/" + Utils.getParams(options);
+            String url = getBaseUrl() + "/" + link_or_token + Utils.getParams(options);
+            Log.d(TAG, "Loading survey URL: " + url);
             intent.putExtra("url", url);
             intent.putExtra("closingDelayInMs", closingDelayInMs);
             intent.putExtra("dismissible", dismissible);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } catch (Exception e) {
-            Log.e("showSurveyPageError", e.getMessage());
+            Log.e(TAG, "Error showing survey page", e);
         }
     }
 
@@ -66,10 +148,11 @@ public class CustomerPulseSurvey {
     public static void showSurveyBottomSheet(Context context, String app_id, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs){
         try {
             options.put("app_id", app_id);
-            String url = BASE_URL + link_or_token + "/" + Utils.getParams(options);
+            String url = getBaseUrl() + "/" + link_or_token + Utils.getParams(options);
+            Log.d(TAG, "Loading survey URL: " + url);
             new CustomerPulseBottomSheet().show(context, url, dismissible, closingDelayInMs);
         } catch (Exception e) {
-            Log.e("showBottomSheetError", e.getMessage());
+            Log.e(TAG, "Error showing survey bottom sheet", e);
         }
     }
 
