@@ -13,3 +13,10 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Igris AI / Claude Code
+/ai/
+/.claude/
+CLAUDE.md
+.igris_version
+/scripts/
