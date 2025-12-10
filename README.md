@@ -6,9 +6,9 @@
     <a href="docs/API.md"><strong>Explore the API docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/AbuDhabiDigitalAuthority/CustomerPulse-Android/issues">Report Bug</a>
+    <a href="https://github.com/KalvadTech/CustomerPulse-Android/issues">Report Bug</a>
     ·
-    <a href="https://github.com/AbuDhabiDigitalAuthority/CustomerPulse-Android/issues">Request Feature</a>
+    <a href="https://github.com/KalvadTech/CustomerPulse-Android/issues">Request Feature</a>
   </p>
 </p>
 
@@ -60,7 +60,7 @@ CustomerPulse Android SDK provides a simple and elegant way to display customer 
 
 ### Option 1: AAR File (Recommended)
 
-1. Download `CustomerPulseSurvey.aar` from the [Releases](https://github.com/AbuDhabiDigitalAuthority/CustomerPulse-Android/releases) page
+1. Download `CustomerPulseSurvey.aar` from the [Releases](https://github.com/KalvadTech/CustomerPulse-Android/releases) page
 2. Add it to your `libs` folder
 3. Add as JAR/AAR dependency in Project Structure
 
@@ -239,10 +239,16 @@ File -> Open -> Select CustomerPulse-Android folder
 
 ---
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes in each version.
+
+---
+
 ## Support
 
-- **Bug Reports**: [GitHub Issues](https://github.com/AbuDhabiDigitalAuthority/CustomerPulse-Android/issues)
-- **Feature Requests**: [GitHub Issues](https://github.com/AbuDhabiDigitalAuthority/CustomerPulse-Android/issues)
+- **Bug Reports**: [GitHub Issues](https://github.com/KalvadTech/CustomerPulse-Android/issues)
+- **Feature Requests**: [GitHub Issues](https://github.com/KalvadTech/CustomerPulse-Android/issues)
 
 ---
 
