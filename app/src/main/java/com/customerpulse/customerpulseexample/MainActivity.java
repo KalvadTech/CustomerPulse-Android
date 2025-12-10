@@ -66,6 +66,21 @@ public class MainActivity extends AppCompatActivity {
          */
         CustomerPulseSurvey.setEnvironment(CustomerPulseSurvey.Environment.SANDBOX);
 
+        /*
+         * Enable Debug Logging (Optional)
+         * --------------------------------
+         * When enabled, the SDK logs detailed information to Logcat.
+         * Useful for debugging during development.
+         * Disable in production builds.
+         *
+         * Logs include:
+         * - Environment configuration
+         * - Survey URL being loaded
+         * - Dismissible state
+         * - Closing delay
+         */
+        CustomerPulseSurvey.setDebugLogging(true);
+
         setupFullPageSurveyButtons();
         setupBottomSheetSurveyButtons();
     }

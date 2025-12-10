@@ -32,6 +32,45 @@ public class CustomerPulseSurvey {
     private static final String TAG = "CustomerPulseSurvey";
 
     /**
+     * Debug logging flag. When enabled, logs SDK operations to Logcat.
+     * Default is false (disabled).
+     */
+    private static boolean debugLogging = false;
+
+    /**
+     * Enable or disable debug logging.
+     * When enabled, the SDK will log detailed information about its operations.
+     *
+     * @param enabled true to enable logging, false to disable
+     */
+    public static void setDebugLogging(boolean enabled) {
+        debugLogging = enabled;
+        if (enabled) {
+            Log.d(TAG, "[CustomerPulse] Debug logging enabled");
+        }
+    }
+
+    /**
+     * Check if debug logging is enabled.
+     *
+     * @return true if debug logging is enabled
+     */
+    public static boolean isDebugLoggingEnabled() {
+        return debugLogging;
+    }
+
+    /**
+     * Log a debug message if debug logging is enabled.
+     *
+     * @param message the message to log
+     */
+    private static void log(String message) {
+        if (debugLogging) {
+            Log.d(TAG, "[CustomerPulse] " + message);
+        }
+    }
+
+    /**
      * SDK Environment configuration.
      * Controls which server the surveys are loaded from.
      */
@@ -76,7 +115,7 @@ public class CustomerPulseSurvey {
     public static void setEnvironment(Environment env) {
         if (env != null) {
             environment = env;
-            Log.d(TAG, "Environment set to: " + env.name());
+            log("Environment set to: " + env.name());
         }
     }
 
@@ -112,7 +151,10 @@ public class CustomerPulseSurvey {
             Intent intent = new Intent(context, WebViewActivity.class);
             options.put("app_id", app_id);
             String url = getBaseUrl() + "/" + link_or_token + Utils.getParams(options);
-            Log.d(TAG, "Loading survey URL: " + url);
+            log("Loading survey page");
+            log("URL: " + url);
+            log("Dismissible: " + dismissible);
+            log("Closing delay: " + closingDelayInMs + "ms");
             intent.putExtra("url", url);
             intent.putExtra("closingDelayInMs", closingDelayInMs);
             intent.putExtra("dismissible", dismissible);
@@ -149,7 +191,10 @@ public class CustomerPulseSurvey {
         try {
             options.put("app_id", app_id);
             String url = getBaseUrl() + "/" + link_or_token + Utils.getParams(options);
-            Log.d(TAG, "Loading survey URL: " + url);
+            log("Loading survey bottom sheet");
+            log("URL: " + url);
+            log("Dismissible: " + dismissible);
+            log("Closing delay: " + closingDelayInMs + "ms");
             new CustomerPulseBottomSheet().show(context, url, dismissible, closingDelayInMs);
         } catch (Exception e) {
             Log.e(TAG, "Error showing survey bottom sheet", e);
