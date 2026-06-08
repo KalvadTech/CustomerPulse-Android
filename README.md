@@ -206,6 +206,53 @@ options.put("lang", "en");
 options.put("lang", "ar");
 ```
 
+### Survey Events
+
+Subscribe to survey lifecycle events by passing a `CustomerPulseSurveyListener` to any
+`showSurveyPage` / `showSurveyBottomSheet` overload. Every method on the listener is a
+`default` no-op, so you only implement the events you care about. All callbacks are
+delivered on the **main (UI) thread**.
+
+```java
+import com.customerpulse.customerpulsesurvey.CustomerPulseSurvey;
+import com.customerpulse.customerpulsesurvey.listener.CustomerPulseSurveyListener;
+
+HashMap<String, String> options = new HashMap<>();
+options.put("lang", "en");
+
+CustomerPulseSurvey.showSurveyPage(this, "APP_ID", "TOKEN", options,
+    new CustomerPulseSurveyListener() {
+        @Override
+        public void onCompleted() {
+            // User finished the survey (survey also auto-closes)
+        }
+
+        @Override
+        public void onError() {
+            // Survey reported an error
+        }
+
+        @Override
+        public void onDismissed() {
+            // Survey was dismissed
+        }
+    });
+```
+
+The same overload is available for bottom sheets and for the fully-configured forms:
+
+```java
+CustomerPulseSurvey.showSurveyBottomSheet(this, "APP_ID", "TOKEN", options, listener);
+CustomerPulseSurvey.showSurveyPage(this, "APP_ID", "TOKEN", options, true, 3000, listener);
+CustomerPulseSurvey.showSurveyBottomSheet(this, "APP_ID", "TOKEN", options, true, 3000, listener);
+```
+
+| Event | Listener method | Behavior |
+|-------|-----------------|----------|
+| `so-widget-completed` | `onCompleted()` | Fires **and** the survey auto-closes after the configured delay |
+| `so-widget-error` | `onError()` | Fires only; the survey is not torn down |
+| `so-widget-closed` | `onDismissed()` | Fires only; notification of a survey-driven close |
+
 ### Important: Context Requirement
 
 **The `context` parameter must be an Activity context, not an Application context.**

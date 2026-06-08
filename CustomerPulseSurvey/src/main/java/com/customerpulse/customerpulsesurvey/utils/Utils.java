@@ -8,6 +8,7 @@ import android.webkit.WebView;
 
 import com.customerpulse.customerpulsesurvey.jsHandler.BottomSheetWebInterface;
 import com.customerpulse.customerpulsesurvey.jsHandler.PageWebInterface;
+import com.customerpulse.customerpulsesurvey.listener.CustomerPulseSurveyListener;
 import com.customerpulse.customerpulsesurvey.view.RoundedWebView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -34,6 +35,21 @@ public class Utils {
     }
 
     /**
+     * load url to web view inside a bottom sheet dialog, with a survey event listener
+     *
+     * @param webView           the webView widget
+     * @param url               the url to load to webView
+     * @param context           instance of the current activity context
+     * @param bottomSheetDialog instance of the bottom sheet dialog
+     * @param closingDelayInMs  time to wait before closing the survey after finish in milli seconds
+     * @param listener          listener notified of survey events on the main thread (may be {@code null})
+     */
+    static public void loadUrl(RoundedWebView webView, String url, Context context, BottomSheetDialog bottomSheetDialog, int closingDelayInMs, CustomerPulseSurveyListener listener) {
+        initializeWebView(webView, url);
+        webView.addJavascriptInterface(new BottomSheetWebInterface(context, bottomSheetDialog, closingDelayInMs, listener), "Android");
+    }
+
+    /**
      * load url to web view inside an activity
      *
      * @param webView  the webView widget
@@ -44,6 +60,20 @@ public class Utils {
     static public void loadUrl(WebView webView, String url, Context context, int closingDelayInMs) {
         initializeWebView(webView, url);
         webView.addJavascriptInterface(new PageWebInterface(context, closingDelayInMs), "Android");
+    }
+
+    /**
+     * load url to web view inside an activity, with a survey event listener
+     *
+     * @param webView          the webView widget
+     * @param url              the url to load to webView
+     * @param context          instance of the current activity context
+     * @param closingDelayInMs time to wait before closing the survey after finish in milli seconds
+     * @param listener         listener notified of survey events on the main thread (may be {@code null})
+     */
+    static public void loadUrl(WebView webView, String url, Context context, int closingDelayInMs, CustomerPulseSurveyListener listener) {
+        initializeWebView(webView, url);
+        webView.addJavascriptInterface(new PageWebInterface(context, closingDelayInMs, listener), "Android");
     }
 
     /**

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.webkit.WebView;
 
 import com.customerpulse.customerpulsesurvey.R;
+import com.customerpulse.customerpulsesurvey.jsHandler.CustomerPulseCallbackRegistry;
+import com.customerpulse.customerpulsesurvey.listener.CustomerPulseSurveyListener;
 import com.customerpulse.customerpulsesurvey.utils.Utils;
 
 /**
@@ -14,6 +16,12 @@ import com.customerpulse.customerpulsesurvey.utils.Utils;
 public class WebViewActivity extends Activity {
 
     private static final String TAG = "WebViewActivity";
+
+    /**
+     * Token referencing the survey event listener held in {@link CustomerPulseCallbackRegistry}.
+     * Defaults to {@link CustomerPulseCallbackRegistry#NO_TOKEN} when no listener was supplied.
+     */
+    private long callbackToken = CustomerPulseCallbackRegistry.NO_TOKEN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +44,11 @@ public class WebViewActivity extends Activity {
 
         int closingDelayInMs = extras.getInt("closingDelayInMs", 0);
 
+        callbackToken = extras.getLong("callbackToken", CustomerPulseCallbackRegistry.NO_TOKEN);
+        CustomerPulseSurveyListener listener = CustomerPulseCallbackRegistry.get(callbackToken);
+
         WebView webView = findViewById(R.id.webView);
-        Utils.loadUrl(webView, url, this, closingDelayInMs);
+        Utils.loadUrl(webView, url, this, closingDelayInMs, listener);
     }
 
     @Override
@@ -51,5 +62,17 @@ public class WebViewActivity extends Activity {
         if (dismissable) {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        // Only remove on a genuine teardown (completion/back/dismiss). On a
+        // configuration-change recreation isFinishing() is false, so the entry is
+        // retained and the recreated onCreate can re-resolve the same redelivered
+        // callbackToken — otherwise callbacks would silently stop after a rotation.
+        if (isFinishing()) {
+            CustomerPulseCallbackRegistry.remove(callbackToken);
+        }
+        super.onDestroy();
     }
 }
