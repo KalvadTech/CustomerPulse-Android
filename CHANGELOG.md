@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.0] - 2026-06-08
+
+### Added
+- **Survey event listener** - `CustomerPulseSurveyListener` interface exposing
+  `onCompleted()`, `onError()`, and `onDismissed()` (each a `default` no-op so you
+  only implement what you need). Mirrors the Web widget events
+  `so-widget-completed` / `so-widget-error` / `so-widget-closed`.
+  - New `showSurveyPage(...)` and `showSurveyBottomSheet(...)` overloads accept a
+    `CustomerPulseSurveyListener`.
+  - `so-widget-error` and `so-widget-closed` are now surfaced to the host app; both
+    previously fell through unhandled.
+  - All callbacks are delivered on the main (UI) thread.
+- Backward compatible: every existing overload, signature, and behavior is unchanged
+  (`so-widget-completed` still auto-closes the survey in addition to firing
+  `onCompleted()`).
+
+### Fixed
+- **Version drift** - the published artifact version was `0.1.0` while the changelog
+  and Javadoc reported `2.0.0`. Aligned the Gradle publication version to the real
+  baseline and applied the additive minor bump in one move: `0.1.0` → `2.1.0`.
+  Consumers pinning the old `0.1.0` coordinate should update to `2.1.0`.
+
+---
+
 ## [2.0.0] - 2025-12-10
 
 ### Added
@@ -67,6 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[2.1.0]: https://github.com/KalvadTech/CustomerPulse-Android/releases/tag/v2.1.0
 [2.0.0]: https://github.com/KalvadTech/CustomerPulse-Android/releases/tag/v2.0.0
 [0.3.4]: https://github.com/KalvadTech/CustomerPulse-Android/releases/tag/v0.3.4
 [0.2.3]: https://github.com/KalvadTech/CustomerPulse-Android/releases/tag/v0.2.3

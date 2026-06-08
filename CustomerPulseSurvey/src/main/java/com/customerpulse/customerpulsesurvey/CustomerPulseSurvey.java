@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.customerpulse.customerpulsesurvey.jsHandler.CustomerPulseCallbackRegistry;
+import com.customerpulse.customerpulsesurvey.listener.CustomerPulseSurveyListener;
 import com.customerpulse.customerpulsesurvey.utils.Utils;
 import com.customerpulse.customerpulsesurvey.view.CustomerPulseBottomSheet;
 import com.customerpulse.customerpulsesurvey.view.WebViewActivity;
@@ -47,8 +49,9 @@ import java.util.HashMap;
  * <p>All methods must be called from the main (UI) thread.</p>
  *
  * @author CustomerPulse
- * @version 2.0.0
+ * @version 2.1.0
  * @see Environment
+ * @see CustomerPulseSurveyListener
  * @see #showSurveyPage(Context, String, String, HashMap, boolean, int)
  * @see #showSurveyBottomSheet(Context, String, String, HashMap, boolean, int)
  */
@@ -207,6 +210,76 @@ public class CustomerPulseSurvey {
     }
 
     /**
+     * Displays a survey in a full-screen Activity and reports survey events to a listener.
+     *
+     * <p>Opens a new Activity containing a WebView that loads the survey. In addition to the
+     * existing auto-close-on-completion behavior, the supplied {@link CustomerPulseSurveyListener}
+     * is notified of {@code onCompleted} / {@code onError} / {@code onDismissed} events.
+     * All callbacks are delivered on the <b>main (UI) thread</b>.</p>
+     *
+     * <h4>Example:</h4>
+     * <pre>{@code
+     * HashMap<String, String> options = new HashMap<>();
+     * options.put("lang", "en");
+     * CustomerPulseSurvey.showSurveyPage(this, "APP_ID", "TOKEN", options, true, 3000,
+     *     new CustomerPulseSurveyListener() {
+     *         @Override public void onCompleted() { /* ... *\/ }
+     *     });
+     * }</pre>
+     *
+     * @param context          Activity context (required). Must be an Activity, not Application context.
+     * @param app_id           Application ID provided by CustomerPulse
+     * @param link_or_token    Survey token or linking ID provided by CustomerPulse
+     * @param options          Additional parameters to pass to the survey (e.g., "lang" for language)
+     * @param dismissible      If true, user can dismiss the survey; if false, must complete it
+     * @param closingDelayInMs Delay in milliseconds before auto-closing after survey completion
+     * @param listener         Listener notified of survey events on the main thread (may be {@code null})
+     *
+     * @see #showSurveyPage(Context, String, String, HashMap, boolean, int)
+     * @see #showSurveyPage(Context, String, String, HashMap, CustomerPulseSurveyListener)
+     * @see CustomerPulseSurveyListener
+     */
+    public static void showSurveyPage(Context context, String app_id, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs, CustomerPulseSurveyListener listener) {
+        try {
+            Intent intent = new Intent(context, WebViewActivity.class);
+            options.put("app_id", app_id);
+            String url = getBaseUrl() + "/" + link_or_token + Utils.getParams(options);
+            log("Loading survey page");
+            log("URL: " + url);
+            log("Dismissible: " + dismissible);
+            log("Closing delay: " + closingDelayInMs + "ms");
+            long token = CustomerPulseCallbackRegistry.register(listener);
+            intent.putExtra("url", url);
+            intent.putExtra("closingDelayInMs", closingDelayInMs);
+            intent.putExtra("dismissible", dismissible);
+            intent.putExtra("callbackToken", token);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "Error showing survey page", e);
+        }
+    }
+
+    /**
+     * Displays a survey in a full-screen Activity with default settings and an event listener.
+     *
+     * <p>Uses default values: dismissible = true, closingDelayInMs = 2000. Callbacks are
+     * delivered on the <b>main (UI) thread</b>.</p>
+     *
+     * @param context       Activity context (required)
+     * @param app_id        Application ID provided by CustomerPulse
+     * @param link_or_token Survey token or linking ID
+     * @param options       Additional parameters (e.g., "lang")
+     * @param listener      Listener notified of survey events on the main thread (may be {@code null})
+     *
+     * @see #showSurveyPage(Context, String, String, HashMap, boolean, int, CustomerPulseSurveyListener)
+     * @see CustomerPulseSurveyListener
+     */
+    public static void showSurveyPage(Context context, String app_id, String link_or_token, HashMap<String, String> options, CustomerPulseSurveyListener listener) {
+        showSurveyPage(context, app_id, link_or_token, options, true, 2000, listener);
+    }
+
+    /**
      * Displays a survey in a full-screen Activity with default settings.
      *
      * <p>Uses default values: dismissible = true, closingDelayInMs = 2000</p>
@@ -299,6 +372,69 @@ public class CustomerPulseSurvey {
         } catch (Exception e) {
             Log.e(TAG, "Error showing survey bottom sheet", e);
         }
+    }
+
+    /**
+     * Displays a survey in a Material Design bottom sheet dialog and reports survey events to a listener.
+     *
+     * <p>Shows a bottom sheet that slides up from the bottom of the screen. In addition to the
+     * existing auto-close-on-completion behavior, the supplied {@link CustomerPulseSurveyListener}
+     * is notified of {@code onCompleted} / {@code onError} / {@code onDismissed} events.
+     * All callbacks are delivered on the <b>main (UI) thread</b>.</p>
+     *
+     * <h4>Example:</h4>
+     * <pre>{@code
+     * HashMap<String, String> options = new HashMap<>();
+     * options.put("lang", "ar");
+     * CustomerPulseSurvey.showSurveyBottomSheet(this, "APP_ID", "TOKEN", options, true, 3000,
+     *     new CustomerPulseSurveyListener() {
+     *         @Override public void onCompleted() { /* ... *\/ }
+     *     });
+     * }</pre>
+     *
+     * @param context          Activity context (required). Must be an Activity, not Application context.
+     * @param app_id           Application ID provided by CustomerPulse
+     * @param link_or_token    Survey token or linking ID provided by CustomerPulse
+     * @param options          Additional parameters to pass to the survey (e.g., "lang" for language)
+     * @param dismissible      If true, shows close button and allows dismissal; if false, must complete
+     * @param closingDelayInMs Delay in milliseconds before auto-closing after survey completion
+     * @param listener         Listener notified of survey events on the main thread (may be {@code null})
+     *
+     * @see #showSurveyBottomSheet(Context, String, String, HashMap, boolean, int)
+     * @see #showSurveyBottomSheet(Context, String, String, HashMap, CustomerPulseSurveyListener)
+     * @see CustomerPulseSurveyListener
+     */
+    public static void showSurveyBottomSheet(Context context, String app_id, String link_or_token, HashMap<String, String> options, boolean dismissible, int closingDelayInMs, CustomerPulseSurveyListener listener) {
+        try {
+            options.put("app_id", app_id);
+            String url = getBaseUrl() + "/" + link_or_token + Utils.getParams(options);
+            log("Loading survey bottom sheet");
+            log("URL: " + url);
+            log("Dismissible: " + dismissible);
+            log("Closing delay: " + closingDelayInMs + "ms");
+            new CustomerPulseBottomSheet().show(context, url, dismissible, closingDelayInMs, listener);
+        } catch (Exception e) {
+            Log.e(TAG, "Error showing survey bottom sheet", e);
+        }
+    }
+
+    /**
+     * Displays a survey in a bottom sheet with default settings and an event listener.
+     *
+     * <p>Uses default values: dismissible = true, closingDelayInMs = 2000. Callbacks are
+     * delivered on the <b>main (UI) thread</b>.</p>
+     *
+     * @param context       Activity context (required)
+     * @param app_id        Application ID provided by CustomerPulse
+     * @param link_or_token Survey token or linking ID
+     * @param options       Additional parameters (e.g., "lang")
+     * @param listener      Listener notified of survey events on the main thread (may be {@code null})
+     *
+     * @see #showSurveyBottomSheet(Context, String, String, HashMap, boolean, int, CustomerPulseSurveyListener)
+     * @see CustomerPulseSurveyListener
+     */
+    public static void showSurveyBottomSheet(Context context, String app_id, String link_or_token, HashMap<String, String> options, CustomerPulseSurveyListener listener) {
+        showSurveyBottomSheet(context, app_id, link_or_token, options, true, 2000, listener);
     }
 
     /**

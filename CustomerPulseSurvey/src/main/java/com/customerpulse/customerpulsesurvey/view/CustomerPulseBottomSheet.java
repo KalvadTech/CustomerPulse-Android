@@ -12,6 +12,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.customerpulse.customerpulsesurvey.R;
+import com.customerpulse.customerpulsesurvey.listener.CustomerPulseSurveyListener;
 import com.customerpulse.customerpulsesurvey.utils.Utils;
 
 /**
@@ -50,8 +51,25 @@ public class CustomerPulseBottomSheet {
      * @param url              the URL to load in the WebView
      * @param dismissible      whether the close button should be visible
      * @param closingDelayInMs time to wait before closing after survey completion in milliseconds
+     *
+     * @see #show(Context, String, boolean, int, CustomerPulseSurveyListener)
      */
     public void show(Context context, String url, boolean dismissible, int closingDelayInMs) {
+        show(context, url, dismissible, closingDelayInMs, null);
+    }
+
+    /**
+     * Display a survey URL in a bottom sheet dialog with a survey event listener.
+     *
+     * @param context          context of the current opened activity
+     * @param url              the URL to load in the WebView
+     * @param dismissible      whether the close button should be visible
+     * @param closingDelayInMs time to wait before closing after survey completion in milliseconds
+     * @param listener         listener notified of survey events on the main thread (may be {@code null})
+     *
+     * @see #show(Context, String, boolean, int)
+     */
+    public void show(Context context, String url, boolean dismissible, int closingDelayInMs, CustomerPulseSurveyListener listener) {
         initializeDialog(context, dismissible);
         bottomSheetDialog.show();
 
@@ -70,7 +88,7 @@ public class CustomerPulseBottomSheet {
 
         closeBtn.setOnClickListener(view -> bottomSheetDialog.dismiss());
 
-        Utils.loadUrl(webView, url, context, bottomSheetDialog, closingDelayInMs);
+        Utils.loadUrl(webView, url, context, bottomSheetDialog, closingDelayInMs, listener);
     }
 
     private void onShow(DialogInterface dialogInterface) {

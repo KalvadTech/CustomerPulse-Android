@@ -4,18 +4,18 @@ apply plugin: 'maven-publish'
 ext {
     mGroupId            = "com.customerpulse.customerpulsesurvey"
     mArtifactId         = "customer-pulse-survey"
-    mVersionName        = "0.1.0"
+    mVersionName        = "2.1.0"
     mLibraryName        = "CustomerPulseSurvey"
     mLibraryDescription = "Library to use customer pulse surveys inside your android app"
 }
 
 android {
     namespace "com.customerpulse.customerpulsesurvey"
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         minSdk 21
-        targetSdk 35
+        targetSdk 36
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -30,6 +30,16 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
+    }
+
+    testOptions {
+        unitTests {
+            // Return defaults (0/null/false) for unmocked android.* methods such as
+            // android.util.Log, so plain JVM unit tests can exercise SDK routing logic
+            // without Robolectric. Without this, calls into android.util.Log throw
+            // "Method ... not mocked".
+            returnDefaultValues = true
+        }
     }
 
     // 🔑 This is what creates `components.release`
@@ -56,7 +66,7 @@ afterEvaluate {
             create("maven", MavenPublication) {
                 groupId = "com.customerpulse.customerpulsesurvey"
                 artifactId = "customer-pulse-survey"
-                version = "0.1.0"
+                version = "2.1.0"
 
                 artifact("$buildDir/outputs/aar/${project.name}-release.aar")
 

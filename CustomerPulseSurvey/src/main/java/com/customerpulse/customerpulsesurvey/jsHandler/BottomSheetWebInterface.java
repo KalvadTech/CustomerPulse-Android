@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import com.customerpulse.customerpulsesurvey.listener.CustomerPulseSurveyListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 /**
@@ -25,6 +26,19 @@ public class BottomSheetWebInterface extends WebAppInterface {
      */
     public BottomSheetWebInterface(Context context, BottomSheetDialog bottomSheetDialog, int closeDelayInMs) {
         super(context, closeDelayInMs);
+        this.bottomSheetDialog = bottomSheetDialog;
+    }
+
+    /**
+     * Instantiate the interface with a survey event listener.
+     *
+     * @param context           reference to the activity context
+     * @param bottomSheetDialog reference to the opened bottom sheet dialog
+     * @param closeDelayInMs    time to wait before closing the survey after finish in milliseconds
+     * @param listener          listener notified of survey events on the main thread (may be {@code null})
+     */
+    public BottomSheetWebInterface(Context context, BottomSheetDialog bottomSheetDialog, int closeDelayInMs, CustomerPulseSurveyListener listener) {
+        super(context, closeDelayInMs, listener);
         this.bottomSheetDialog = bottomSheetDialog;
     }
 
