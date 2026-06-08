@@ -51,6 +51,10 @@ public class WebViewActivity extends Activity {
         Utils.loadUrl(webView, url, this, closingDelayInMs, listener);
     }
 
+    // Intentional: this class extends raw android.app.Activity (minSdk 21), where the
+    // OnBackPressedDispatcher API is unavailable, so overriding the deprecated
+    // onBackPressed() is the correct mechanism here. Behavior is unchanged.
+    @SuppressWarnings("deprecation")
     @Override
     public void onBackPressed() {
         Bundle extras = getIntent().getExtras();
