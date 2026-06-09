@@ -10,7 +10,7 @@ For other installation methods, see the main [README](../README.md).
 
 ### 1. Add AAR File
 
-Add `CustomerPulseSurvey.aar` file to your `libs` folder inside the `app` folder:
+Add the `CustomerPulseSurvey-release.aar` file (downloaded from the [Releases](https://github.com/KalvadTech/CustomerPulse-Android/releases) page) to your `libs` folder inside the `app` folder:
 
 <img src="https://user-images.githubusercontent.com/24971915/143434248-fb979977-4c01-48fd-b779-6c60d9ec8324.png" width="600" />
 
