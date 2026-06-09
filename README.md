@@ -52,7 +52,7 @@ CustomerPulse Android SDK provides a simple and elegant way to display customer 
 | Requirement | Minimum Version |
 |-------------|-----------------|
 | Android API | 21+ |
-| Java | 8+ |
+| Java | 17 |
 
 ---
 
@@ -60,7 +60,7 @@ CustomerPulse Android SDK provides a simple and elegant way to display customer 
 
 ### Option 1: AAR File (Recommended)
 
-1. Download `CustomerPulseSurvey.aar` from the [Releases](https://github.com/KalvadTech/CustomerPulse-Android/releases) page
+1. Download `CustomerPulseSurvey-release.aar` from the [Releases](https://github.com/KalvadTech/CustomerPulse-Android/releases) page
 2. Add it to your `libs` folder
 3. Add as JAR/AAR dependency in Project Structure
 
@@ -69,7 +69,7 @@ For detailed steps with screenshots, see [docs/INSTALLATION.md](docs/INSTALLATIO
 ### Option 2: Gradle (Coming Soon)
 
 ```groovy
-implementation 'ae.gov.customerpulse:customerpulsesurvey:1.0.0'
+implementation 'com.customerpulse.customerpulsesurvey:customer-pulse-survey:2.1.0'
 ```
 
 ---
